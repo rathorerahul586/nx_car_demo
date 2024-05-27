@@ -3,6 +3,13 @@
 NxCar Demo is a Flutter project showcasing various screens and components for a flutter application.
 It includes features such as onboarding, login, OTP verification.
 
+### Common Components
+
+- `AppAssetsName`: Contains asset names used in the app.
+- `AppToolbar`: Toolbar component for navigation.
+- `AppTextField`: Custom text field widget for input fields.
+- `AppButton`: Custom button widget.
+
 ## Screens
 
 ### OnboardingScreen
@@ -14,7 +21,6 @@ slides. Users can swipe through the slides and proceed to the next screen.
 
 - `OnboardingScreenCubit`: Manages the state and logic for the onboarding screen.
 - `IconPositions`: Enum defining different positions for icons on the onboarding screen.
-- `AppAssetsName`: Contains asset names used in the app.
 
 ### LoginScreen
 
@@ -24,8 +30,6 @@ fields for phone number, name, email, and vehicle number.
 #### Components
 
 - `LoginScreenCubit`: Manages the state and logic for the login screen.
-- `AppToolbar`: Toolbar component for navigation.
-- `AppTextField`: Custom text field widget for input fields.
 - `VehicleNumberFormatter`: Formatter for vehicle number input field.
 
 ### OTPScreen
@@ -36,5 +40,3 @@ number and enter it to proceed.
 #### Components
 
 - `OTPScreenCubit`: Manages the state and logic for the OTP screen.
-- `AppToolbar`: Toolbar component for navigation.
-- `AppButton`: Custom button widget.
