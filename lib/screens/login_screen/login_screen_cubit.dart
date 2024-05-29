@@ -29,7 +29,7 @@ class LoginScreenCubit extends Cubit<LoginScreenCubitState> {
       return;
     }
 
-    if (nameTextFieldCubit.text.isNotEmpty) {
+    if (nameTextFieldCubit.text.isValidName) {
       nameTextFieldCubit.setErrorText();
     } else {
       nameTextFieldCubit.setErrorText(

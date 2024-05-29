@@ -17,4 +17,14 @@ extension StringExtension on String? {
     return RegExp(r'^[A-Z]{2}[0-9]{1,2}[A-Z]?(?:[A-Z]*)?[0-9]{4}$')
         .hasMatch(this ?? '');
   }
+
+  /// Validate name.
+  /// - allowing Alphabets, Dots, Spaces
+  /// - DOT never comes at the start of the name
+  /// - unicode are not allowed
+  /// Valid formats are [Rahul, Rahul Kumar, Mr. Rahul Kumar etc]
+  bool get isValidName {
+    return RegExp(r'^[A-Za-z\s]+[.]?[A-Za-z\s]*$')
+        .hasMatch(this ?? '');
+  }
 }
