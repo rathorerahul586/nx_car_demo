@@ -30,7 +30,11 @@ class _OTPScreenState extends State<OTPScreen> {
         body: Column(
           children: [
             const AppToolbar(),
-            _mainBody(),
+            Expanded(
+              child: SingleChildScrollView(
+                child: _mainBody(),
+              ),
+            ),
           ],
         ),
       ),
