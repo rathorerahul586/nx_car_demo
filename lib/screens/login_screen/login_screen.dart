@@ -27,7 +27,11 @@ class _LoginScreenState extends State<LoginScreen> {
         body: Column(
           children: [
             const AppToolbar(),
-            _mainBody(),
+            Expanded(
+              child: SingleChildScrollView(
+                child: _mainBody(),
+              ),
+            ),
           ],
         ),
       ),
