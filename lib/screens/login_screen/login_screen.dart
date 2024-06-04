@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nx_car_demo/constants/app_strings.dart';
 import 'package:nx_car_demo/screens/login_screen/login_screen_cubit.dart';
@@ -54,6 +55,8 @@ class _LoginScreenState extends State<LoginScreen> {
           emailTextField(),
           const SizedBox(height: 12),
           vehicleNumberTextField(),
+          const SizedBox(height: 12),
+          pinCodeTextField(),
           const SizedBox(height: 24),
           BlocBuilder<LoginScreenCubit, LoginScreenCubitState>(
             bloc: _cubit,
@@ -136,6 +139,19 @@ class _LoginScreenState extends State<LoginScreen> {
         labelText: AppStrings.enterYourVehicleNumber,
         textInputFormatter: [VehicleNumberFormatter()],
         inputAction: TextInputAction.done,
+      ),
+    );
+  }
+
+  /// Builds the text field for entering the vehicle number.
+  Widget pinCodeTextField() {
+    return BlocProvider.value(
+      value: _cubit.pinCodeTextFieldCubit,
+      child: AppTextField(
+        labelText: AppStrings.enterYourPinCode,
+        textInputFormatter: [FilteringTextInputFormatter.digitsOnly],
+        inputAction: TextInputAction.done,
+        maxLength: 6,
       ),
     );
   }

@@ -19,11 +19,13 @@ class AppStrings {
   static const String enterYourName = 'Enter your name';
   static const String enterYourEmail = 'Enter your email';
   static const String enterYourVehicleNumber = 'Enter your vehicle number';
+  static const String enterYourPinCode = 'Enter your pin code';
   static const String next = 'Next';
   static const String resend = 'Resend';
   static const String pleaseEnterValidNumber = 'Please enter valid number';
   static const String pleaseEnterValidName = 'Please enter valid name';
   static const String pleaseEnterValidEmail = 'Please enter valid email';
+  static const String pleaseEnterValidPinCode = 'Please enter valid Pin code';
   static const String pleaseEnterValidVehicleNo =
       'Please enter valid vehicle number';
 

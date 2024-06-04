@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:nx_car_demo/common/widgets/app_text_field/app_text_field_cubit.dart';
 import 'package:nx_car_demo/constants/app_strings.dart';
+import 'package:nx_car_demo/screens/login_screen/login_repository.dart';
 import 'package:nx_car_demo/screens/login_screen/login_screen.dart';
+import 'package:nx_car_demo/screens/login_screen/models/signup_request_model.dart';
 import 'package:nx_car_demo/utils/string_extenstion.dart';
 
 import '../../utils/screen_navigator.dart';
@@ -16,6 +18,7 @@ class LoginScreenCubit extends Cubit<LoginScreenCubitState> {
   final nameTextFieldCubit = AppTextFieldCubit();
   final emailTextFieldCubit = AppTextFieldCubit();
   final vehicleNumberTextFieldCubit = AppTextFieldCubit();
+  final pinCodeTextFieldCubit = AppTextFieldCubit();
 
   LoginScreenCubit() : super(const LoginScreenCubitState());
 
@@ -53,6 +56,15 @@ class LoginScreenCubit extends Cubit<LoginScreenCubitState> {
       return;
     }
 
+    if (pinCodeTextFieldCubit.text.length == 6) {
+      pinCodeTextFieldCubit.setErrorText();
+    } else {
+      pinCodeTextFieldCubit.setErrorText(
+        errorText: AppStrings.pleaseEnterValidPinCode,
+      );
+      return;
+    }
+
     // Perform login after successful validation
     performLogin();
   }
@@ -62,9 +74,29 @@ class LoginScreenCubit extends Cubit<LoginScreenCubitState> {
     emit(state.copyWith(showButtonLoader: true));
     // Hide keyboard
     FocusManager.instance.primaryFocus?.unfocus();
-    await Future.delayed(const Duration(seconds: 2));
-    // Navigate to OTP screen
-    Get.find<ScreenNavigator>().moveToOtpScreen(numberTextFieldCubit.text);
+
+    final requestModel = SignupRequestModel(
+      mobile: numberTextFieldCubit.text,
+      name: nameTextFieldCubit.text,
+      email: emailTextFieldCubit.text,
+      vehicleNo: vehicleNumberTextFieldCubit.text,
+      pinCode: pinCodeTextFieldCubit.text,
+    );
+
+    var response = await LoginRepository.getInstance.signUp(requestModel);
+
+    debugPrint('response - ${response?.data}');
+    if (response?.data != null) {
+      final otp = response?.data?.otp;
+      debugPrint('otp - $otp');
+      if (otp != null) {
+        Get.find<ScreenNavigator>().moveToOtpScreen(requestModel, otp);
+      } else {
+        Get.snackbar('Server Error', 'Failed to send OTP');
+      }
+    } else {
+      Get.snackbar('Signup Failed', response?.error ?? '');
+    }
     emit(state.copyWith(showButtonLoader: false));
   }
 }

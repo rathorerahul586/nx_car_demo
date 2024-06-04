@@ -23,6 +23,8 @@ class AppTextField extends StatefulWidget {
   /// Sets the action button on the keyboard.  Default value is [TextInputAction.done]
   final TextInputAction inputAction;
 
+  final int? maxLength;
+
   const AppTextField({
     super.key,
     this.labelText,
@@ -30,6 +32,7 @@ class AppTextField extends StatefulWidget {
     this.textInputType = TextInputType.text,
     this.inputAction = TextInputAction.done,
     this.textInputFormatter = const [],
+    this.maxLength,
   });
 
   @override
@@ -53,6 +56,7 @@ class _AppTextFieldState extends State<AppTextField> {
             textCapitalization: TextCapitalization.words,
             inputFormatters: widget.textInputFormatter,
             textInputAction: widget.inputAction,
+            maxLength: widget.maxLength,
             decoration: InputDecoration(
               label: getLabelText(),
               labelStyle: AppStyles.getNoto500Style(
@@ -63,6 +67,7 @@ class _AppTextFieldState extends State<AppTextField> {
                   : AppColors.colorF7FAF8.toColor(),
               isCollapsed: true,
               isDense: true,
+              counter: const Offstage(),
               focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                       color: AppColors.primaryLight.toColor(), width: 0.2),
