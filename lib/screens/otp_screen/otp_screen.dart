@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nx_car_demo/constants/app_strings.dart';
+import 'package:nx_car_demo/screens/login_screen/models/signup_request_model.dart';
 import 'package:nx_car_demo/themes/app_colors.dart';
 import 'package:nx_car_demo/themes/app_styles.dart';
 
@@ -12,16 +13,24 @@ import 'otp_screen_cubit.dart';
 /// the login process.
 class OTPScreen extends StatefulWidget {
   /// The phone number to which the OTP was sent.
-  final String phoneNumber;
+  final SignupRequestModel requestModel;
+  final int otp;
 
-  const OTPScreen({super.key, required this.phoneNumber});
+  const OTPScreen({
+    super.key,
+    required this.requestModel,
+    required this.otp,
+  });
 
   @override
   State<OTPScreen> createState() => _OTPScreenState();
 }
 
 class _OTPScreenState extends State<OTPScreen> {
-  late final OTPScreenCubit _cubit = OTPScreenCubit();
+  late final OTPScreenCubit _cubit = OTPScreenCubit(
+    widget.requestModel,
+    widget.otp,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +88,7 @@ class _OTPScreenState extends State<OTPScreen> {
                 // todo remove after api implementation
                 const SizedBox(height: 16),
                 Text(
-                  '*For testing purpose valid OTP is 5555',
+                  '*For testing purpose valid OTP is ${_cubit.otp}',
                   style: AppStyles.getNoto500Style(
                       color: AppColors.color585A5A.toColor(), fontSize: 12),
                 )
@@ -100,7 +109,7 @@ class _OTPScreenState extends State<OTPScreen> {
               color: AppColors.color585A5A.toColor(), fontSize: 24),
         ),
         Text(
-          _cubit.secureMiddleNumbers(widget.phoneNumber),
+          _cubit.secureMiddleNumbers(widget.requestModel.mobile ?? ''),
           style: AppStyles.getNoto500Style(
               color: AppColors.color585A5A.toColor(), fontSize: 16),
         ),

@@ -4,6 +4,8 @@ import 'package:nx_car_demo/screens/landing_screen/landing_screen.dart';
 import 'package:nx_car_demo/screens/login_screen/login_screen.dart';
 import 'package:nx_car_demo/screens/otp_screen/otp_screen.dart';
 
+import '../screens/login_screen/models/signup_request_model.dart';
+
 /// A utility class for navigating between screens.
 ///
 /// The [ScreenNavigator] class provides methods to easily navigate between different screens
@@ -21,9 +23,17 @@ class ScreenNavigator {
 
   /// Navigates to the OTP screen with the provided phone number.
   /// - [phoneNumber]: The phone number to pass to the OTP screen.
-  void moveToOtpScreen(String phoneNumber) {
-    Get.to(OTPScreen(phoneNumber: phoneNumber),
-        transition: Transition.rightToLeft);
+  void moveToOtpScreen(
+    SignupRequestModel requestModel,
+    int otp,
+  ) {
+    Get.to(
+      OTPScreen(
+        requestModel: requestModel,
+        otp: otp,
+      ),
+      transition: Transition.rightToLeft,
+    );
   }
 
   /// Navigates to the landing screen.

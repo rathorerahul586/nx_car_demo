@@ -2,12 +2,22 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:nx_car_demo/screens/login_screen/models/signup_request_model.dart';
+import 'package:nx_car_demo/screens/otp_screen/models/otp_verification_request_model.dart';
 
 import '../../utils/screen_navigator.dart';
+import '../login_screen/login_repository.dart';
 
 /// Cubit class to manage the state of the [OTPScreen].
 class OTPScreenCubit extends Cubit<OTPScreenCubitState> {
-  OTPScreenCubit() : super(const OTPScreenCubitState());
+  /// Default OTP value for testing purposes.
+  final SignupRequestModel _requestModel;
+  int? otp;
+
+  OTPScreenCubit(
+    this._requestModel,
+    this.otp,
+  ) : super(const OTPScreenCubitState());
 
   /// Text editing controllers for the OTP input fields.
   final TextEditingController controller1 = TextEditingController();
@@ -15,19 +25,30 @@ class OTPScreenCubit extends Cubit<OTPScreenCubitState> {
   final TextEditingController controller3 = TextEditingController();
   final TextEditingController controller4 = TextEditingController();
 
-  /// Default OTP value for testing purposes.
-  final _defaultOtp = 5555;
-
   /// Resends OTP.
   Future<void> resendOtp() async {
     emit(state.copyWith(showButtonLoader: true));
     // Hide keyboard
     FocusManager.instance.primaryFocus?.unfocus();
-    await Future.delayed(const Duration(seconds: 2));
-    controller1.clear();
-    controller2.clear();
-    controller3.clear();
-    controller4.clear();
+
+    var response = await LoginRepository.getInstance.signUp(_requestModel);
+
+    debugPrint('response - ${response?.data}');
+    if (response?.data != null) {
+      otp = response?.data?.otp;
+      debugPrint('otp - $otp');
+      if (otp != null) {
+        controller1.clear();
+        controller2.clear();
+        controller3.clear();
+        controller4.clear();
+      } else {
+        Get.snackbar('Server Error', 'Failed to send OTP');
+      }
+    } else {
+      Get.snackbar('Server Error', response?.error ?? '');
+    }
+
     emit(state.copyWith(isInvalidOtp: false, showButtonLoader: false));
   }
 
@@ -39,13 +60,19 @@ class OTPScreenCubit extends Cubit<OTPScreenCubitState> {
     emit(state.copyWith(showButtonLoader: true));
     // Hide keyboard
     FocusManager.instance.primaryFocus?.unfocus();
-    await Future.delayed(const Duration(seconds: 2));
-    if (otp == _defaultOtp.toString()) {
+    var response = await LoginRepository.getInstance
+        .otpVerification(OTPVerificationRequestModel(
+      mobile: _requestModel.mobile,
+      otp: otp,
+    ));
+
+    if (response?.data != null) {
       emit(state.copyWith(isInvalidOtp: false, showButtonLoader: false));
       Get.find<ScreenNavigator>().moveToLandingScreen();
     } else {
-      emit(state.copyWith(isInvalidOtp: true, showButtonLoader: false));
+      Get.snackbar('Signup Failed', response?.error ?? '');
     }
+    emit(state.copyWith(isInvalidOtp: true, showButtonLoader: false));
   }
 
   /// Replaces middle numbers of the phone number with asterisks for privacy.
