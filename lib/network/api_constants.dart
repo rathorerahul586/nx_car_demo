@@ -1,6 +1,6 @@
 class APIConstants {
   static const String baseStateUrl = "https://crm-dev.nxcar.in/crm/api/";
-  static const String baseProdUrl = "https://nxcar.in/crm/api/";
+  static const String baseProdUrl = "https://crm-dev.nxcar.in/crm/api/";
 
   // endpoints
 
