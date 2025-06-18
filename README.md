@@ -101,10 +101,13 @@ I build smooth UIs, obsess over clean architecture, and enjoy breathing life int
 
 ### 🔗 Let’s Connect
 
-- 💼 [LinkedIn](https://www.linkedin.com/in/rahul-kumar-mob-dev/)
-- 💻 [GitHub](https://github.com/rathorerahul586)
+[![LinkedIn](https://go-skill-icons.vercel.app/api/icons?i=linkedin)](https://www.linkedin.com/in/rahul-kumar-mob-dev/)
+[![GitHub](https://go-skill-icons.vercel.app/api/icons?i=github)](https://github.com/rathorerahul586)
+[![X](https://go-skill-icons.vercel.app/api/icons?i=x)](https://x.com/rathorerahul586)
+
+### 🔗 Checkout my dev-blogs on
 - 🧠 [Medium](https://rathorerahul586.medium.com/)
-- X  [X](https://x.com/rathorerahul586)
+
 
 > 🚀 **Open to work!**  
 > If you're looking for someone who can craft slick mobile apps and handle UI/UX like a pro, feel free to reach out.  
