@@ -92,6 +92,12 @@ number and enter it to proceed.
 #### Components
 
 - `OTPScreenCubit`: Manages the state and logic for the OTP screen.
+
+## 📱 Download & Try
+
+Wanna give it a spin? Grab the APK and test it out yourself:
+
+[![Download APK](https://img.shields.io/badge/Download-APK-blue.svg?style=for-the-badge&logo=android)](apk/app-release.apk)
   
 # 🙋‍♂️ About Me
 
