@@ -92,3 +92,21 @@ number and enter it to proceed.
 #### Components
 
 - `OTPScreenCubit`: Manages the state and logic for the OTP screen.
+  
+# 🙋‍♂️ About Me
+
+Hey there! I’m **Rahul Rathore** — a mobile app developer with solid experience in **Native Android**, **Flutter**, and **Jetpack Compose**.
+
+I build smooth UIs, obsess over clean architecture, and enjoy breathing life into apps with motion and interactivity. This project is one of many experiments I’ve built with love and caffeine ☕️.
+
+### 🔗 Let’s Connect
+
+- 💼 [LinkedIn](https://www.linkedin.com/in/rahul-kumar-mob-dev/)
+- 💻 [GitHub](https://github.com/rathorerahul586)
+- 🧠 [Medium](https://rathorerahul586.medium.com/)
+- X  [X](https://x.com/rathorerahul586)
+
+> 🚀 **Open to work!**  
+> If you're looking for someone who can craft slick mobile apps and handle UI/UX like a pro, feel free to reach out.  
+> Or just zoom into the screenshots... my contact details are sneakily hidden in there like an easter egg 🥚👀.
+
