@@ -97,7 +97,7 @@ number and enter it to proceed.
 
 Wanna give it a spin? Grab the APK and test it out yourself:
 
-[![Download APK](https://img.shields.io/badge/Download-APK-blue.svg?style=for-the-badge&logo=android)](apk/app-release.apk)
+[![Download APK](https://img.shields.io/badge/Download-APK-blue.svg?style=for-the-badge&logo=android)](https://github.com/rathorerahul586/nx_car_demo/releases/download/v1.0.0/app-release.apk)
   
 # 🙋‍♂️ About Me
 
