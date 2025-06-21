@@ -15,10 +15,10 @@ It includes features such as onboarding, login, OTP verification.
 
 ## 🎯 Project Context
 
-This app was built as part of a Flutter animation-focused assignment during a hiring process.  
+This app was built as part of a Flutter animation-focused app.  
 It demonstrates smooth animated transitions, form validation, and clean state handling using Bloc — all implemented without relying on external libraries.
 
-The app itself was well-received and stands as a solid demonstration of my skills in Flutter UI/UX architecture and animation.
+The app itself was well-received and solidly demonstrated my skills in Flutter UI/UX architecture and animation.
 
 ---
 
